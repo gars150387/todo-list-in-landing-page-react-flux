@@ -3,14 +3,53 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
+		<nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+			<button
+				className="navbar-toggler navbar-toggler-sticky-top"
+				type="button"
+				data-toggle="collapse"
+				data-target="#navbarTogglerDemo03"
+				aria-controls="navbarTogglerDemo03"
+				aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span className="navbar-toggler-icon" />
+			</button>
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
+				<a className="navbar-brand content-justify-center" href="#">
+					Start Bootstrap
+				</a>
 			</Link>
-			<div className="ml-auto">
-				<Link to="/demo">
-					<button className="btn btn-primary">Check the Context in action</button>
-				</Link>
+			<div className="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo03">
+				<ul className="navbar-nav">
+					<li className="nav-item active">
+						<Link to="/">
+							<a className="nav-link" href="#">
+								Home <span className="sr-only">(current)</span>
+							</a>
+						</Link>
+					</li>
+					<li className="nav-item active">
+						<Link to="/">
+							<a className="nav-link" href="#">
+								About
+							</a>
+						</Link>
+					</li>
+					<li className="nav-item active">
+						<Link to="/">
+							<a className="nav-link" href="#">
+								Service
+							</a>
+						</Link>
+					</li>
+					<li className="nav-item active">
+						<Link to="/">
+							<a className="nav-link" href="#">
+								Contact
+							</a>
+						</Link>
+					</li>
+				</ul>
 			</div>
 		</nav>
 	);
