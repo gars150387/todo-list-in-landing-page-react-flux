@@ -36,6 +36,11 @@ export function Todo() {
 									className="btn btn-link m-4 text-justify-end">
 									<i className="far fa-times-circle fan-2x" />
 								</button>
+								<button
+									onClick={() => setList(list.filter(item => element !== item))}
+									className="btn btn-link m-4 text-justify-end">
+									<i className="far fa-times-circle fan-2x" />
+								</button>
 							</li>
 						</ul>{" "}
 					</div>

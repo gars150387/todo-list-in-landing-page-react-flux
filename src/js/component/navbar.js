@@ -24,18 +24,18 @@ export const Navbar = () => {
 					<li className="nav-item active">
 						<Link to="/">
 							<a className="nav-link" href="#">
-								Home <span className="sr-only">(current)</span>
+								Sign Up <span className="sr-only">(current)</span>
 							</a>
 						</Link>
 					</li>
 					<li className="nav-item active">
 						<Link to="/">
 							<a className="nav-link" href="#">
-								About
+								Sign In
 							</a>
 						</Link>
 					</li>
-					<li className="nav-item active">
+					{/* <li className="nav-item active">
 						<Link to="/">
 							<a className="nav-link" href="#">
 								Service
@@ -48,7 +48,7 @@ export const Navbar = () => {
 								Contact
 							</a>
 						</Link>
-					</li>
+					</li> */}
 				</ul>
 			</div>
 		</nav>
