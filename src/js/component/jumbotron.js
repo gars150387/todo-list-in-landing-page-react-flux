@@ -5,11 +5,10 @@ export const Jumbotron = () => {
 	return (
 		<div className="container-fluid mt-4 ">
 			<div className="jumbotron p-auto">
-				<h1 className="display-4">A warm welcome!</h1>
-				<p className="lead">
-					This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-					featured content or information.
-				</p>
+				<h1 className="display-4">
+					A warm welcome! <i className="fas fa-mug-hot fa-2x" />
+				</h1>
+				<p className="lead">Hello, This is a simple to do list to help you to organize your day</p>
 				{/* <hr className="my-4" /> */}
 				{/* <p>
 				It uses utility classes for typography and spacing to space
@@ -18,7 +17,7 @@ export const Jumbotron = () => {
 				<p className="lead">
 					<Link to="/todo">
 						<a className="btn btn-primary btn-lg" href="#" role="button">
-							Call to action
+							Click here
 						</a>
 					</Link>
 				</p>

@@ -36,7 +36,7 @@ export function Todo() {
 				</div>
 			</nav>
 			<div className="list">
-				<h3 className="pt-5">ToDo</h3>
+				<h3 className="pt-5">To-Do List</h3>
 				<input
 					value={todo}
 					className="input mt-1"

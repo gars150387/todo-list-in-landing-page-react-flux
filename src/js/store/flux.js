@@ -1,10 +1,14 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			list: []
+			list: [],
+			todo: []
 		},
 		actions: {
-			loadSomeData: () => {
+			getToDo: () => {
+				fetch("https://assets.breatheco.de/apis/fake/todos/user/gars150387")
+					.then(res => res.json())
+					.then(response => setStore({ todo: response }));
 				/**
 									fetch().then().then(data => setStore({ "foo": data.bar }))
 								*/
