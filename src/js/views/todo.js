@@ -9,6 +9,32 @@ export function Todo() {
 
 	return (
 		<div className="text-center mt-5">
+			<nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+				<button
+					className="navbar-toggler navbar-toggler-sticky-top"
+					type="button"
+					data-toggle="collapse"
+					data-target="#navbarTogglerDemo03"
+					aria-controls="navbarTogglerDemo03"
+					aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span className="navbar-toggler-icon" />
+				</button>
+				<Link to="/">
+					<a className="navbar-brand content-justify-center" href="#">
+						Start Bootstrap
+					</a>
+				</Link>
+				<div className="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo03">
+					<ul className="navbar-nav">
+						<li className="nav-item active">
+							<Link to="/">
+								<button>Home</button>
+							</Link>
+						</li>
+					</ul>
+				</div>
+			</nav>
 			<div className="list">
 				<h3 className="pt-5">ToDo</h3>
 				<input
@@ -38,8 +64,8 @@ export function Todo() {
 								</button>
 								<button
 									onClick={() => setList(list.filter(item => element !== item))}
-									className="btn btn-link m-4 text-justify-end">
-									<i className="far fa-times-circle fan-2x" />
+									className="btn btn-link text-justify-end">
+									<i className="fas fa-pencil-alt" />
 								</button>
 							</li>
 						</ul>{" "}
@@ -48,9 +74,6 @@ export function Todo() {
 				<div className="card">
 					<div className="card-body">{list !== 0 ? `${list.length} Item(s) left` : " "}</div>
 				</div>
-				<Link to="/">
-					<button>Home</button>
-				</Link>
 			</div>
 		</div>
 	);

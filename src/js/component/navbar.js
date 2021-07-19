@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import { Modal } from "./modal";
 
 export const Navbar = () => {
 	return (
@@ -26,6 +27,7 @@ export const Navbar = () => {
 							<a className="nav-link" href="#">
 								Sign Up <span className="sr-only">(current)</span>
 							</a>
+							{/* <Modal /> */}
 						</Link>
 					</li>
 					<li className="nav-item active">
