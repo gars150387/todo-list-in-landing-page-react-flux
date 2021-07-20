@@ -55,26 +55,25 @@ export const Todo = () => {
 					style={{ marginBottom: "8px", height: "45px" }}>
 					Add
 				</button>
-				{sotre.data &&
-					store.data.map((element, index) => (
-						<div key={index}>
-							<ul className="list-group list-group-lg">
-								<li className="list-group-item">
-									{element}
-									<button
-										onClick={() => store.actions.deleteElement(index)}
-										className="btn btn-link m-4 text-justify-end">
-										<i className="far fa-times-circle fan-2x" />
-									</button>
-									<button
-										// onClick={() => setList(list.filter(item => element !== item))}
-										className="btn btn-link text-justify-end">
-										<i className="fas fa-pencil-alt" />
-									</button>
-								</li>
-							</ul>{" "}
-						</div>
-					))}
+				{store.data.map((element, index) => (
+					<div key={index}>
+						<ul className="list-group list-group-lg">
+							<li className="list-group-item">
+								{element}
+								<button
+									onClick={() => store.actions.deleteElement(todoList.filter(item => element !== item))}
+									className="btn btn-link m-4 text-justify-end">
+									<i className="far fa-times-circle fan-2x" />
+								</button>
+								<button
+									// onClick={() => setList(list.filter(item => element !== item))}
+									className="btn btn-link text-justify-end">
+									<i className="fas fa-pencil-alt" />
+								</button>
+							</li>
+						</ul>{" "}
+					</div>
+				))}
 				<div className="card">
 					<div className="card-body">{todoList !== 0 ? `${todoList.length} Item(s) left` : " "}</div>
 				</div>
