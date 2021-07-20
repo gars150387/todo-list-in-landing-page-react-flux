@@ -61,14 +61,14 @@ export const Todo = () => {
 							<li className="list-group-item">
 								{element.label}
 								<button
-									onClick={() => actions.deleteData(todoList.filter(item => element !== item))}
-									className="btn btn-link m-4 text-justify-end">
-									<i className="far fa-times-circle fan-2x" />
-								</button>
-								<button
-									// onClick={() => setList(list.filter(item => element !== item))}
+									onClick={() => actions.updateData(todoList.at(index => element === index))}
 									className="btn btn-link text-justify-end">
 									<i className="fas fa-pencil-alt" />
+								</button>
+								<button
+									onClick={() => actions.deleteData(todoList.filter(item => element !== item))}
+									className="btn btn-danger btn-sm m-4 text-justify-end">
+									<i className="far fa-times-circle fan-2x" />
 								</button>
 							</li>
 						</ul>{" "}

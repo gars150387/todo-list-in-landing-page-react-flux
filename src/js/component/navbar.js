@@ -16,9 +16,11 @@ export const Navbar = () => {
 				<span className="navbar-toggler-icon" />
 			</button>
 			<Link to="/">
-				<a className="navbar-brand content-justify-center" href="#">
-					Start Bootstrap
-				</a>
+				<div>
+					<a className="navbar-brand content-justify-center" href="#">
+						Start Bootstrap
+					</a>
+				</div>
 			</Link>
 			<div className="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo03">
 				<ul className="navbar-nav">
