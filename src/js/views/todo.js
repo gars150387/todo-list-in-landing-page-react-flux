@@ -6,7 +6,7 @@ import { Context } from "../store/appContext";
 export const Todo = () => {
 	const [todo, setTodo] = useState("");
 	// const [list, setList] = useState([]);
-	const [store, actions] = useContext(Context);
+	const { store, actions } = useContext(Context);
 	const todoList = store.data;
 
 	return (
@@ -47,7 +47,7 @@ export const Todo = () => {
 				/>
 				<button
 					onClick={() => {
-						actions.updateData(todo);
+						actions.addData({ label: todo, done: false });
 						// actions.setList([...list, todo]);
 						// setTodo("");
 					}}
@@ -59,9 +59,9 @@ export const Todo = () => {
 					<div key={index}>
 						<ul className="list-group list-group-lg">
 							<li className="list-group-item">
-								{element}
+								{element.label}
 								<button
-									onClick={() => store.actions.deleteElement(todoList.filter(item => element !== item))}
+									onClick={() => actions.deleteData(todoList.filter(item => element !== item))}
 									className="btn btn-link m-4 text-justify-end">
 									<i className="far fa-times-circle fan-2x" />
 								</button>

@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			getToDo: () => {
-				fetch("https://assets.breatheco.de/apis/fake/todos/user/gars150387")
+				fetch("https://assets.breatheco.de/apis/fake/todos/user/gars15")
 					.then(res => res.json())
 					.then(res => setStore({ data: res }));
 				/**
@@ -14,8 +14,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 								*/
 			},
 			addData: newData => {
-				let data = [...getStore().data, newData];
-				fetch("https://assets.breatheco.de/apis/fake/todos/user/gars150387", {
+				let data = getStore().data;
+				newData = [...getStore().data, newData];
+
+				fetch("https://assets.breatheco.de/apis/fake/todos/user/gars15", {
 					method: "PUT", // or 'POST'
 					body: JSON.stringify(newData), // data can be `string` or {object}!
 					headers: {
@@ -26,16 +28,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(res => setStore({ apiResponse: res }))
 					.then(() => getActions().getToDo());
 			}
-		}
+		},
 		// updateData: newData => {
 		// 	let data = getStore().data;
 		// 	setStore({ data: [...data, newData] });
 		// },
-		// deleteElement: position => {
-		// 	let data = getStore().data;
-		// 	newDatat = data.filter((item, index) => position !== index);
-		// 	setStore({ data: newData });
-		// }
+		deleteData: position => {
+			// let data = getStore().data;
+			// newData = data.filter((item, index) => position !== index);
+			// setStore({ data: newData });
+			fetch("https://assets.breatheco.de/apis/fake/todos/user/gars15", {
+				method: "PUT", //or "POST"
+				body: JSON.stringify(position), // data can be 'string' or {object}!
+				headers: {
+					"Content-Type": "application/json"
+				}
+			}).then(() => getActions().getTodos());
+		}
 	};
 };
 
