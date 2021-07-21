@@ -61,7 +61,7 @@ export const Todo = () => {
 							<li className="list-group-item">
 								{element.label}
 								<button
-									onClick={() => actions.updateData(todoList.at(index => element === index))}
+									onClick={() => actions.updateData(todoList.at(element, index))}
 									className="btn btn-link text-justify-end">
 									<i className="fas fa-pencil-alt" />
 								</button>
