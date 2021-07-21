@@ -1,4 +1,4 @@
-import { element } from "prop-types";
+import { element, string } from "prop-types";
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
@@ -8,6 +8,7 @@ export const Todo = () => {
 	// const [list, setList] = useState([]);
 	const { store, actions } = useContext(Context);
 	const [edit, setEdit] = useState(true);
+	const [newTodo, setNewTodo] = useState("");
 	const todoList = store.data;
 
 	return (
@@ -61,16 +62,25 @@ export const Todo = () => {
 						<ul className="list-group list-group-lg">
 							<li className="list-group-item">
 								{element.label}
-								{/* {!edit ? (
-									<i className="fas fa-pencil-alt" onClick={() => setEdit(true)} />
+								{!edit ? (
+									((<i className="fas fa-pencil-alt" onClick={() => setEdit(true)} />,
+									<input value={newTodo} onChange={e => setEdit(e.target.value)} />),
+									(
+										<button
+											onClick={() => {
+												actions.updateData({ label: newTodo, done: false });
+												// actions.setList([...list, todo]);
+												// setTodo("");
+											}}
+											className="btn btn-xl btn-rounded-end btn-light"
+											style={{ marginBottom: "8px", height: "45px" }}>
+											Add
+										</button>
+									))
 								) : (
 									<i className="fas fa-pencil-alt" onClick={() => setEdit(false)} />
-								)} */}
-								<button
-									onClick={() => actions.updateData(todoList.at((todoList[index] = element)))}
-									className="btn btn-link text-justify-end">
-									<i className="fas fa-pencil-alt" />
-								</button>
+								)}
+
 								<button
 									onClick={() => actions.deleteData(todoList.filter(item => element !== item))}
 									className="btn btn-danger btn-sm m-4 text-justify-end">
