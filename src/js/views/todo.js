@@ -9,7 +9,7 @@ export const Todo = () => {
 	const { store, actions } = useContext(Context);
 	const [edit, setEdit] = useState(true);
 	const [newTodo, setNewTodo] = useState("");
-	const todoList = store.data;
+	let todoList = store.data;
 
 	return (
 		<div className="text-center mt-5">
@@ -63,21 +63,22 @@ export const Todo = () => {
 							<li className="list-group-item">
 								{element.label}
 								{!edit ? (
-									((<i className="fas fa-pencil-alt" onClick={() => setEdit(true)} />,
-									<input value={newTodo} onChange={e => setEdit(e.target.value)} />),
-									(
-										<button
-											onClick={() => {
-												actions.updateData({ label: newTodo, done: false });
-												// actions.setList([...list, todo]);
-												// setTodo("");
-											}}
-											className="btn btn-xl btn-rounded-end btn-light"
-											style={{ marginBottom: "8px", height: "45px" }}>
-											Add
-										</button>
-									))
+									(<i className="fas fa-pencil-alt" onClick={() => setEdit(true)} />,
+									<input value={newTodo} onChange={e => setEdit(e.target.value)} />)
 								) : (
+									// (
+									// 	<button
+									// 		onClick={() => {
+									// 			actions.updateData({ label: newTodo, done: false });
+									// 			// actions.setList([...list, todo]);
+									// 			// setTodo("");
+									// 		}}
+									// 		className="btn btn-xl btn-rounded-end btn-light"
+									// 		style={{ marginBottom: "8px", height: "45px" }}>
+									// 		Add
+									// 	</button>
+									// ))
+
 									<i className="fas fa-pencil-alt" onClick={() => setEdit(false)} />
 								)}
 
