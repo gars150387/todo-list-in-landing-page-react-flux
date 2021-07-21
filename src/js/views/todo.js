@@ -8,7 +8,7 @@ export const Todo = () => {
 	// const [list, setList] = useState([]);
 	const { store, actions } = useContext(Context);
 	const [edit, setEdit] = useState(true);
-	const [newTodo, setNewTodo] = useState("");
+	const [update, setUpdate] = useState("");
 	let todoList = store.data;
 
 	return (
@@ -64,7 +64,7 @@ export const Todo = () => {
 								{element.label}
 								{!edit ? (
 									(<i className="fas fa-pencil-alt" onClick={() => setEdit(true)} />,
-									<input value={newTodo} onChange={e => setEdit(e.target.value)} />)
+									<input value={update} onChange={e => setUpdate(e.target.value)} />)
 								) : (
 									// (
 									// 	<button
