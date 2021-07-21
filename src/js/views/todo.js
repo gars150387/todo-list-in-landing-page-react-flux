@@ -7,6 +7,7 @@ export const Todo = () => {
 	const [todo, setTodo] = useState("");
 	// const [list, setList] = useState([]);
 	const { store, actions } = useContext(Context);
+	const [edit, setEdit] = useState(true);
 	const todoList = store.data;
 
 	return (
@@ -60,8 +61,13 @@ export const Todo = () => {
 						<ul className="list-group list-group-lg">
 							<li className="list-group-item">
 								{element.label}
+								{/* {!edit ? (
+									<i className="fas fa-pencil-alt" onClick={() => setEdit(true)} />
+								) : (
+									<i className="fas fa-pencil-alt" onClick={() => setEdit(false)} />
+								)} */}
 								<button
-									onClick={() => actions.updateData(todoList.at(element, index))}
+									onClick={() => actions.updateData(todoList.at((todoList[index] = element)))}
 									className="btn btn-link text-justify-end">
 									<i className="fas fa-pencil-alt" />
 								</button>
