@@ -28,20 +28,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(res => setStore({ apiResponse: res }))
 					.then(() => getActions().getToDo());
 			},
-			updateData: modifyData => {
-				let data = getStore().data;
-				modifyData = [...getStore().data, modifyData];
+			updateData: newUpdatedData => {
+				newUpdatedData = [...getStore().data, newUpdatedData];
 
 				fetch("https://assets.breatheco.de/apis/fake/todos/user/gars15", {
 					method: "PUT", // or 'POST'
-					body: JSON.stringify(modifyData), // data can be `string` or {object}!
+					body: JSON.stringify(newUpdatedData), // data can be `string` or {object}!
 					headers: {
 						"Content-Type": "application/json"
 					}
-				})
-					.then(res => res.json())
-					.then(res => setStore({ apiResponse: res }))
-					.then(() => getActions().getToDo());
+				}).then(() => getActions().getToDo());
 			},
 			deleteData: position => {
 				// let data = getStore().data;

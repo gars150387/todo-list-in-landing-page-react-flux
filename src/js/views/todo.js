@@ -2,14 +2,14 @@ import { element, string } from "prop-types";
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { todoList } from "../component/todoList";
 
 export const Todo = () => {
 	const [todo, setTodo] = useState("");
 	// const [list, setList] = useState([]);
 	const { store, actions } = useContext(Context);
-	const [edit, setEdit] = useState(true);
+	const [edit, setEdit] = useState(false);
 	const [update, setUpdate] = useState("");
-	let todoList = store.data;
 
 	return (
 		<div className="text-center mt-5">
@@ -49,7 +49,7 @@ export const Todo = () => {
 				/>
 				<button
 					onClick={() => {
-						actions.addData({ label: todo, done: false });
+						actions.addData({ label: update, done: false });
 						// actions.setList([...list, todo]);
 						// setTodo("");
 					}}
@@ -57,43 +57,13 @@ export const Todo = () => {
 					style={{ marginBottom: "8px", height: "45px" }}>
 					Add
 				</button>
-				{store.data.map((element, index) => (
-					<div key={index}>
-						<ul className="list-group list-group-lg">
-							<li className="list-group-item">
-								{element.label}
-								{!edit ? (
-									(<i className="fas fa-pencil-alt" onClick={() => setEdit(true)} />,
-									<input value={update} onChange={e => setUpdate(e.target.value)} />)
-								) : (
-									// (
-									// 	<button
-									// 		onClick={() => {
-									// 			actions.updateData({ label: newTodo, done: false });
-									// 			// actions.setList([...list, todo]);
-									// 			// setTodo("");
-									// 		}}
-									// 		className="btn btn-xl btn-rounded-end btn-light"
-									// 		style={{ marginBottom: "8px", height: "45px" }}>
-									// 		Add
-									// 	</button>
-									// ))
-
-									<i className="fas fa-pencil-alt" onClick={() => setEdit(false)} />
-								)}
-
-								<button
-									onClick={() => actions.deleteData(todoList.filter(item => element !== item))}
-									className="btn btn-danger btn-sm m-4 text-justify-end">
-									<i className="far fa-times-circle fan-2x" />
-								</button>
-							</li>
-						</ul>{" "}
+				<ul className="list-group list-group-lg">
+					{store.data &&
+						store.data.map((element, index) => <todoList key={index} element={element} index={index} />)}
+					<div className="card">
+						<div className="card-body">{store.data !== 0 ? `${store.data.length} Item(s) left` : " "}</div>
 					</div>
-				))}
-				<div className="card">
-					<div className="card-body">{todoList !== 0 ? `${todoList.length} Item(s) left` : " "}</div>
-				</div>
+				</ul>{" "}
 			</div>
 		</div>
 	);
