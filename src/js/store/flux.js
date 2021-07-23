@@ -28,8 +28,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(res => setStore({ apiResponse: res }))
 					.then(() => getActions().getToDo());
 			},
-			updateData: newUpdatedData => {
-				newUpdatedData = [...getStore().data, newUpdatedData];
+			updateData: (label, index) => {
+				let newUpdatedData = getStore().data;
+				newUpdatedData[index] = { label: label, done: false };
 
 				fetch("https://assets.breatheco.de/apis/fake/todos/user/gars15", {
 					method: "PUT", // or 'POST'

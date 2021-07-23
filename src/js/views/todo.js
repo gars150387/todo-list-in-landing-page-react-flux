@@ -49,7 +49,7 @@ export const Todo = () => {
 				/>
 				<button
 					onClick={() => {
-						actions.addData({ label: update, done: false });
+						actions.addData({ label: todo, done: false });
 						// actions.setList([...list, todo]);
 						// setTodo("");
 					}}
@@ -59,11 +59,36 @@ export const Todo = () => {
 				</button>
 				<ul className="list-group list-group-lg">
 					{store.data &&
-						store.data.map((element, index) => <todoList key={index} element={element} index={index} />)}
-					<div className="card">
-						<div className="card-body">{store.data !== 0 ? `${store.data.length} Item(s) left` : " "}</div>
-					</div>
+						store.data.map((element, index) => (
+							// <todoList key={index} element={element} index={index} />)}
+							<li className="list-group-item" key={index}>
+								{element.label}
+								{/* {!edit.state && edit.index ? ( */}
+								<button onClick={() => setEdit({ state: true, i: index })}>
+									<input onChange={e => setUpdate(e.target.value)} />
+									<i
+										className="fas fa-arrow-right fas-2x"
+										onClick={() => actions.updateData(update, index)}
+									/>
+								</button>
+								{/* ) : ( */}
+								<button
+									onClick={() => actions.deleteData(store.data.filter(item => element !== item))}
+									className="btn btn-danger btn-sm m-4 text-justify-end">
+									<i className="far fa-times-circle fan-2x" />
+								</button>
+								{/* )} */}
+								{/* <button
+									onClick={() => actions.deleteData(store.data.filter(item => element !== item))}
+									className="btn btn-danger btn-sm m-4 text-justify-end">
+									<i className="far fa-times-circle fan-2x" />
+								</button> */}
+							</li>
+						))}
 				</ul>{" "}
+				<div className="card">
+					<div className="card-body">{store.data !== 0 ? `${store.data.length} Item(s) left` : " "}</div>
+				</div>
 			</div>
 		</div>
 	);
