@@ -2,7 +2,7 @@ import { element, string } from "prop-types";
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import { todoList } from "../component/todoList";
+import TodoList from "../component/TodoList";
 
 export const Todo = () => {
 	const [todo, setTodo] = useState("");
@@ -59,32 +59,7 @@ export const Todo = () => {
 				</button>
 				<ul className="list-group list-group-lg">
 					{store.data &&
-						store.data.map((element, index) => (
-							// <todoList key={index} element={element} index={index} />)}
-							<li className="list-group-item" key={index}>
-								{element.label}
-								{/* {!edit.state && edit.index ? ( */}
-								<button onClick={() => setEdit({ state: true, i: index })}>
-									<input onChange={e => setUpdate(e.target.value)} />
-									<i
-										className="fas fa-arrow-right fas-2x"
-										onClick={() => actions.updateData(update, index)}
-									/>
-								</button>
-								{/* ) : ( */}
-								<button
-									onClick={() => actions.deleteData(store.data.filter(item => element !== item))}
-									className="btn btn-danger btn-sm m-4 text-justify-end">
-									<i className="far fa-times-circle fan-2x" />
-								</button>
-								{/* )} */}
-								{/* <button
-									onClick={() => actions.deleteData(store.data.filter(item => element !== item))}
-									className="btn btn-danger btn-sm m-4 text-justify-end">
-									<i className="far fa-times-circle fan-2x" />
-								</button> */}
-							</li>
-						))}
+						store.data.map((element, index) => <TodoList key={index} element={element} index={index} />)}
 				</ul>{" "}
 				<div className="card">
 					<div className="card-body">{store.data !== 0 ? `${store.data.length} Item(s) left` : " "}</div>

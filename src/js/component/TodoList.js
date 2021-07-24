@@ -3,7 +3,7 @@ import { Context } from "../store/appContext";
 import { ElementType } from "react";
 import PropTypes from "prop-types";
 
-const todoList = ({ element, index }) => {
+const TodoList = ({ element, index }) => {
 	// const [list, setList] = useState([]);
 	const { store, actions } = useContext(Context);
 	const [edit, setEdit] = useState(false);
@@ -14,20 +14,23 @@ const todoList = ({ element, index }) => {
 			<li className="list-group-item" key={index}>
 				{element.label}
 				{!edit && edit == index ? (
-					<button>
-						<input onClick={() => setEdit(true)} value={update} onChange={e => setUpdate(e.target.value)} />
-						<i
-							className="far fa-pencil-alt fa"
-							onClick={() => actions.updateData({ label: update, done: false })}
-						/>
+					<i className="fas fa-pencil-alt" onClick={() => setEdit({ state: true, i: index })} />
+				) : (
+					""
+				)}
+
+				{edit && edit == index ? (
+					<button onClick={() => setEdit({ state: true, i: index })}>
+						<input onChange={e => setUpdate(e.target.value)} />
+						<i className="fas fa-arrow-right fas-2x" onClick={() => actions.updateData(update, index)} />
 					</button>
 				) : (
-					<button
-						onClick={() => actions.deleteData(store.data.filter(item => element !== item))}
-						className="btn btn-danger btn-sm m-4 text-justify-end">
-						<i className="far fa-times-circle fan-2x" />
+					<button onClick={() => setEdit({ state: true, i: index })}>
+						<input onChange={e => setUpdate(e.target.value)} />
+						<i className="fas fa-arrow-right fas-2x" onClick={() => actions.updateData(update, index)} />
 					</button>
 				)}
+
 				<button
 					onClick={() => actions.deleteData(store.data.filter(item => element !== item))}
 					className="btn btn-danger btn-sm m-4 text-justify-end">
@@ -37,9 +40,9 @@ const todoList = ({ element, index }) => {
 		</div>
 	);
 };
-todoList.propTypes = {
-	element: PropTypes.object,
+TodoList.propTypes = {
+	element: PropTypes.obj,
 	index: PropTypes.number
 };
 
-export default todoList;
+export default TodoList;
