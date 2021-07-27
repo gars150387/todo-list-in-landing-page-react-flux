@@ -16,15 +16,13 @@ const TodoList = ({ element, index }) => {
 				{!edit && edit == index ? (
 					<i className="fas fa-pencil-alt" onClick={() => setEdit({ state: true, i: index })} />
 				) : (
-					""
+					<input placeholder={element.label} onChange={el => setUpdate(el.target.value)} value={update} />
 				)}
-
 				{!edit && edit == index ? (
-					<button onClick={() => setEdit({ state: true, i: index })}>
-						<input onChange={e => setUpdate(e.target.value)} />
-						<i className="fas fa-arrow-right fas-2x" onClick={() => actions.updateData(update, index)} />
-					</button>
-				) : ""}
+					<i className="fas fa-arrow-right fas-2x" onClick={() => actions.updateData(update, index)} />
+				) : (
+					<i className="fas fa-pencil-alt" onClick={() => setEdit({ state: false, i: index })} />
+				)}
 
 				<button
 					onClick={() => actions.deleteData(store.data.filter(item => element !== item))}
