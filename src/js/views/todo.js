@@ -59,7 +59,9 @@ export const Todo = () => {
 				</button>
 				<ul className="list-group list-group-lg">
 					{store.data &&
-						store.data.map((element, index) => <TodoList key={index} element={element} index={index} />)}
+						store.data
+							.reverse()
+							.map((element, index) => <TodoList key={index} element={element} index={index} />)}
 				</ul>{" "}
 				<div className="card">
 					<div className="card-body">{store.data !== 0 ? `${store.data.length} Item(s) left` : " "}</div>
