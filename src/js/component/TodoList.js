@@ -25,13 +25,13 @@ const TodoList = ({ element, index }) => {
 					)}
 					{!edit.state && edit.i == index ? (
 						<i
-							className="fas fa-arrow-right fas-2x"
+							className="fas fa-arrow-right fas-2x ml-2"
 							onClick={() => {
 								actions.updateData(update, index), setEdit({ state: true, i: index });
 							}}
 						/>
 					) : (
-						<i className="fas fa-pencil-alt" onClick={() => setEdit({ state: false, i: index })} />
+						<i className="fas fa-pencil-alt ml-2" onClick={() => setEdit({ state: false, i: index })} />
 					)}
 				</div>
 				<button
