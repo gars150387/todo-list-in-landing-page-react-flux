@@ -6,29 +6,34 @@ import PropTypes from "prop-types";
 const TodoList = ({ element, index }) => {
 	// const [list, setList] = useState([]);
 	const { store, actions } = useContext(Context);
-	const [edit, setEdit] = useState(false);
+	const [edit, setEdit] = useState({ state: false, i: undefined });
 	const [update, setUpdate] = useState("");
 
 	return (
 		<div key={index}>
 			<li className="list-group-item" key={index}>
-				{element.label}
-				{!edit && edit == index ? (
-					<i className="fas fa-pencil-alt" onClick={() => setEdit({ state: true, i: index })} />
-				) : (
-					<input placeholder={element.label} onChange={el => setUpdate(el.target.value)} value={update} />
-				)}
-				{!edit && edit == index ? (
-					""
-				) : (
-					<i
-						className="fas fa-arrow-right fas-2x"
-						onClick={() => {
-							actions.updateData(update, index), setEdit({ state: false, i: index });
-						}}
-					/>
-				)}
-
+				<div className="ml-2 d-inline">
+					{!edit.state && edit.i == index ? (
+						<input
+							className="ml-2"
+							placeholder={element.label}
+							onChange={e => setUpdate(e.target.value)}
+							value={update}
+						/>
+					) : (
+						`${element.label}`
+					)}
+					{!edit.state && edit.i == index ? (
+						<i
+							className="fas fa-arrow-right fas-2x"
+							onClick={() => {
+								actions.updateData(update, index), setEdit({ state: true, i: index });
+							}}
+						/>
+					) : (
+						<i className="fas fa-pencil-alt" onClick={() => setEdit({ state: false, i: index })} />
+					)}
+				</div>
 				<button
 					onClick={() => actions.deleteData(store.data.filter(item => element !== item))}
 					className="btn btn-danger btn-sm m-4 text-justify-end">
@@ -39,7 +44,7 @@ const TodoList = ({ element, index }) => {
 	);
 };
 TodoList.propTypes = {
-	element: PropTypes.obj,
+	element: PropTypes.object,
 	index: PropTypes.number
 };
 
